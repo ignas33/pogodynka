@@ -2,9 +2,12 @@ Ten projekt ma na celu stworzenie prostej aplikacji wyświetlającej aktualną p
 
 Funkcje:
 - Wyszukiwanie miasta
-- Aktualna temperatura
+- Ziana jednostki metrycznej
+- Zmiana motywu (jasny/ciemny)
+- Wyświetlanie temperatury
 - Opis warunków pogodowych
 - Wilgotność i prędkość wiatru
+- Prognoza na kilka dni
 
 Napisane z pomocą:
 HTML, CSS, JavaScript, API pogodowe (OpenWeather)
