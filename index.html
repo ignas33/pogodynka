@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Pogodynka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <header class="header">
+        <div class="nazwa_aplikacji">Pogodynka</div> 
+
+        <div class="wyszukiwarka">
+            <input type="text" id="poleMiasta" value="Łódź" placeholder="Wpisz nazwę miasta">
+            <button id="przyciskSzukaj">Szukaj</button>
+        </div>
+
+        <div class="przyciskiZmiany">
+            <button id="przyciskJednostek">°C / °F</button>
+            <button id="przyciskMotywu">Motyw</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <div id="komunikat" class="komunikat"></div>
+
+        <section class="aktualna-pogoda">
+            <h2 id="nazwaMiasta">Nazwa miasta</h2>
+
+            <div class="pogoda-glowna">
+                <div class="ikona-temp">
+                    <img id="ikonaPogody" src="" alt="">
+                    <div class="temperatura" id="temperatura">0°C</div>
+                </div>
+
+                <div id="opisPogody">Opis pogody</div>
+                <div>Wilgotność: <span id="wilgotnosc">0</span>%</div>
+                <div>Wiatr: <span id="predkoscWiatru">0</span> m/s</div>
+            </div>
+        </section>
+
+        <section class="prognoza">
+            <h3>Prognoza na kilka dni</h3>
+            <div id="kontenerPrognozy" class="kontener-prognozy">
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Dane pogodowe: OpenWeather</p>
+        <p>Created by ignas33</p>
+    </footer>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
