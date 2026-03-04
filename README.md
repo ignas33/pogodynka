@@ -1,4 +1,5 @@
 !!! Do poprawnego działania strony potrzebny jest klucz API ze strony OpenWeather
+
 !!! Trzeba go umieścić w pierwszej linijce pliku main.js
 
 
