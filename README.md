@@ -1,5 +1,5 @@
-!!! Do poprawnego działania strony potrzebny jest klucz API ze strony OpenWeather
-!!! Trzeba go umieścić w pierwszej linijce pliku main.js
+#!!! Do poprawnego działania strony potrzebny jest klucz API ze strony OpenWeather
+#!!! Trzeba go umieścić w pierwszej linijce pliku main.js
 
 
 Ten projekt ma na celu stworzenie prostej aplikacji wyświetlającej aktualną pogodę dla wybranego miasta na podstawie danych z API.
