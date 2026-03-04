@@ -1,4 +1,4 @@
-const apiKey = "27b121ad7452a3aaa892018238e70f54";
+const apiKey = "KLUCZ_API";
 
 let jednostka = "metric";
 let aktualneMiasto = "Łódź";
@@ -148,5 +148,6 @@ function pobierzPogode(miasto) {
         });
 
 }
+
 
 pobierzPogode(aktualneMiasto);
