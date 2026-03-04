@@ -7,6 +7,7 @@ Funkcje:
 - Wyświetlanie temperatury
 - Opis warunków pogodowych
 - Wilgotność i prędkość wiatru
+- Prognoza na dzień
 - Prognoza na kilka dni
 
 Napisane z pomocą:
