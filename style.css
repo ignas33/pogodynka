@@ -1,20 +1,14 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: Arial;
   transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
-html, body {
-  height: 100%;
-}
-
 body {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background-color: #fff;
+  background: #fff;
   color: #222;
 }
 
@@ -27,13 +21,10 @@ body {
   flex-direction: column;
 }
 
-/* ---------------------------------------- */
-/* header */
+/* -------------------------------- */
 
 .header {
-  background-color: #fff;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -43,10 +34,9 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: #333;
   flex: 1 1 200px;
+  font: 700 1.8rem Arial;
+  color: #333;
 }
 
 .logo img {
@@ -64,11 +54,10 @@ body {
 
 .wyszukiwarka input {
   padding: 8px 12px;
-  background-color: #fff;
+  width: 180px;
+  font-size: 1rem;
   border: 1px solid #bbb;
   border-radius: 20px;
-  font-size: 1rem;
-  width: 180px;
 }
 
 .wyszukiwarka input:focus {
@@ -78,7 +67,7 @@ body {
 
 .wyszukiwarka button {
   padding: 8px 16px;
-  background-color: #00a2e8;
+  background: #00a2e8;
   border: none;
   border-radius: 20px;
   color: #222;
@@ -87,10 +76,10 @@ body {
 }
 
 .wyszukiwarka button:hover {
-  background-color: #0486be;
+  background: #0486be;
 }
 
-.wyszukiwarka #przyciskLokalizacja {
+#przyciskLokalizacja {
   width: 140px;
 }
 
@@ -104,19 +93,18 @@ body {
   padding: 8px 16px;
   border-radius: 20px;
   border: 1px solid #00a2e8;
-  background-color: transparent;
+  background: transparent;
   color: #00a2e8;
   font-weight: 600;
   cursor: pointer;
 }
 
 .przyciskiZmiany button:hover {
-  background-color: #00a2e8;
+  background: #00a2e8;
   color: #222;
 }
 
-/* ---------------------------------------- */
-/* main */
+/* -------------------------------- */
 
 .main {
   flex: 1;
@@ -135,8 +123,8 @@ body {
 }
 
 .aktualna-pogoda h2 {
-  font-weight: 700;
   font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 15px;
 }
 
@@ -145,7 +133,6 @@ body {
   justify-content: center;
   align-items: center;
   gap: 30px;
-  flex-wrap: wrap;
 }
 
 .ikona-temp {
@@ -171,13 +158,9 @@ body {
 
 .prognoza h3,
 .prognoza-dzis h3 {
-  font-weight: 700;
   font-size: 1.3rem;
+  font-weight: 700;
   margin-bottom: 20px;
-}
-
-.prognoza-dzis h3 {
-  margin-bottom: 15px;
 }
 
 .kontener-prognozy {
@@ -191,7 +174,6 @@ body {
 }
 
 .prognoza-dzis .kontener-prognozy {
-  flex-wrap: nowrap;
   overflow-x: auto;
 }
 
@@ -210,38 +192,30 @@ body {
 .ladny-kafelek {
   min-width: 110px;
   flex: 1 1 110px;
-  background-color: #f9f9f9;
+  background: #f9f9f9;
 }
 
 .ladny-kafelek img {
   width: 50px;
   height: 50px;
   border-radius: 10px;
-  background-color: #b6b6b6;
+  background: #b6b6b6;
 }
 
-/* ---------------------------------------- */
-/* footer */
+/* -------------------------------- */
 
 .footer {
   text-align: center;
   font-size: 0.9rem;
   color: #999;
   padding: 15px;
-  background-color: #fff;
 }
 
-/* ---------------------------------------- */
-/* ciemny motyw */
+/* -------------------------------- */
 
 .ciemny-motyw {
-  background-color: #111;
+  background: #111;
   color: #fff;
-}
-
-.ciemny-motyw .header,
-.ciemny-motyw .footer {
-  background-color: #111;
 }
 
 .ciemny-motyw h2,
@@ -252,12 +226,12 @@ body {
 }
 
 .ciemny-motyw .ladny-kafelek {
-  background-color: #1e1e1e;
+  background: #1e1e1e;
   border-color: #333;
 }
 
 .ciemny-motyw input {
-  background-color: #222;
+  background: #222;
   color: #fff;
   border-color: #444;
 }
@@ -267,12 +241,12 @@ body {
 }
 
 .ciemny-motyw .wyszukiwarka button {
-  background-color: #1e6753;
+  background: #1e6753;
   color: #fff;
 }
 
 .ciemny-motyw .wyszukiwarka button:hover {
-  background-color: #145243;
+  background: #145243;
 }
 
 .ciemny-motyw .przyciskiZmiany button {
@@ -281,9 +255,9 @@ body {
 }
 
 .ciemny-motyw .przyciskiZmiany button:hover {
-  background-color: #1e6753;
+  background: #1e6753;
 }
 
 .ciemny-motyw .ladny-kafelek img {
-  background-color: #606060;
+  background: #606060;
 }
