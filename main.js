@@ -69,6 +69,7 @@ function pobierzPogode(miasto) {
             if(data.name == "Lódzkie") {
                 miasto = "Lodz";
                 pobierzPogode(miasto);
+                return;
             } 
 
             if(data.name == "Lodz") {
@@ -184,5 +185,6 @@ function pobierzPogodeLokalizacja(lat, lon) {
             pobierzPogode(aktualneMiasto);
         })
 }
+
 
 pobierzPogode(aktualneMiasto);
