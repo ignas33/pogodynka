@@ -55,6 +55,11 @@ przyciskLokalizacja.addEventListener("click", function() {
 });
 
 function pobierzPogode(miasto) {
+
+    if (miasto.toLowerCase() === "łódź") {
+        miasto = "Lodz";
+    }
+
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + miasto + "&appid=" + apiKey + "&units=" + jednostka + "&lang=pl")
         .then(response => response.json())
         .then(data => {
@@ -63,23 +68,12 @@ function pobierzPogode(miasto) {
 
             const dzisiejszaData = new Date().toLocaleDateString("pl-PL");
 
-            // występuje błąd, że po wpisani łódź wypisuje województwo łodzkie
-            // a dopiero lodz to łódź
-
-            if(data.name == "Lódzkie") {
-                miasto = "Lodz";
-                pobierzPogode(miasto);
-                return;
-            } 
-
             if(data.name == "Lodz") {
                 document.getElementById("nazwaMiasta").textContent = "Łódź, " + data.sys.country + " - " + dzisiejszaData;
             } else {
                 document.getElementById("nazwaMiasta").textContent =
                 data.name + ", " + data.sys.country + " - " + dzisiejszaData;
             }
-
-
           
             if (jednostka === "metric") {
                 symbol = "°C";
@@ -185,6 +179,5 @@ function pobierzPogodeLokalizacja(lat, lon) {
             pobierzPogode(aktualneMiasto);
         })
 }
-
 
 pobierzPogode(aktualneMiasto);
