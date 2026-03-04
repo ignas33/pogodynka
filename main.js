@@ -1,4 +1,4 @@
-const apiKey = "KLUCZ_API";
+const apiKey = "27b121ad7452a3aaa892018238e70f54";
 
 let jednostka = "metric";
 let aktualneMiasto = "Łódź";
@@ -45,9 +45,11 @@ function pobierzPogode(miasto) {
         .then(response => response.json())
         .then(data => {
 
-            document.getElementById("nazwaMiasta").textContent = data.name;
+            const dataDzis = new Date(data.dt * 1000).toLocaleDateString("pl-PL");
 
-            let symbol;
+            document.getElementById("nazwaMiasta").textContent =
+            data.name + " - " + dataDzis;
+
             if (jednostka === "metric") {
                 symbol = "°C";
             } else {
@@ -72,7 +74,7 @@ function pobierzPogode(miasto) {
             komunikat.textContent = error.message;
         });
 
-
+        //poniżej pobieranie na 5 dni
 
         fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + miasto + "&appid=" + apiKey + "&units=" + jednostka + "&lang=pl")
         .then(response => response.json())
@@ -88,22 +90,58 @@ function pobierzPogode(miasto) {
                 symbol = "°F";
             }
 
-            for (let i = 0; i < data.list.length; i += 8) {
-                let dzien = data.list[i]; 
-                let dataTekst = dzien.dt_txt.split(" ")[0]; 
+            const teraz = new Date();
+            const dzisiaj = teraz.toISOString().split("T")[0];
+
+            const prognozaDzis = data.list.filter(item =>
+                item.dt_txt.startsWith(dzisiaj)
+            );
+
+            const kontenerDzis = document.getElementById("kontenerPrognozyDzis");
+            kontenerDzis.innerHTML = "";
+
+            prognozaDzis.forEach(godzina => {
+
+                let godzinaTekst = godzina.dt_txt.split(" ")[1].slice(0,5);
+                let temp = godzina.main.temp;
+                let opis = godzina.weather[0].description;
+                let ikona = godzina.weather[0].icon;
+
+                let div = document.createElement("div");
+                div.classList.add("ladny-kafelek");
+
+                div.innerHTML = `
+                    <div><strong>${godzinaTekst}</strong></div>
+                    <img src="https://openweathermap.org/img/wn/${ikona}@2x.png">
+                    <div>${temp}${symbol}</div>
+                    <div>${opis}</div>
+                `;
+
+                kontenerDzis.appendChild(div);
+            });
+
+            const daily = data.list.filter(item =>
+                item.dt_txt.includes("12:00:00")
+            );
+
+            daily.forEach(dzien => {
+
+                let dataTekst = new Date(dzien.dt_txt).toLocaleDateString("pl-PL");
                 let temp = dzien.main.temp;
 
-                let div = document.createElement("div"); 
+                let div = document.createElement("div");
+                div.classList.add("ladny-kafelek");
+
                 div.innerHTML = "<strong>" + dataTekst + "</strong><br>" + temp + symbol;
 
                 kontener.appendChild(div);
-            }
+            });
+
         })
         .catch(error => {
             komunikat.textContent = error.message;
         });
 
 }
-
 
 pobierzPogode(aktualneMiasto);

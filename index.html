@@ -22,6 +22,7 @@
             <button id="przyciskMotywu">Motyw</button>
         </div>
     </header>
+    <hr>
 
     <main class="main">
         <div id="komunikat" class="komunikat"></div>
@@ -29,17 +30,29 @@
         <section class="aktualna-pogoda">
             <h2 id="nazwaMiasta">Nazwa miasta</h2>
 
-            <div class="pogoda-glowna">
-                <div class="ikona-temp">
-                    <img id="ikonaPogody" src="" alt="">
-                    <div class="temperatura" id="temperatura">0°C</div>
-                </div>
+            <div class="ladny-kafelek">
+                <div class="pogoda-glowna">
+                    <div class="ikona-temp">
+                        <img id="ikonaPogody" src="" alt="">
+                        <div class="temperatura" id="temperatura">0°C</div>
+                    </div>
 
-                <div id="opisPogody">Opis pogody</div>
-                <div>Wilgotność: <span id="wilgotnosc">0</span>%</div>
-                <div>Wiatr: <span id="predkoscWiatru">0</span> m/s</div>
+                    <div id="opisPogody">Opis pogody</div>
+                    <div>Wilgotność: <span id="wilgotnosc">0</span>%</div>
+                    <div>Wiatr: <span id="predkoscWiatru">0</span> m/s</div>
+                </div>
             </div>
         </section>
+
+        <hr>
+
+        <section class="prognoza-dzis">
+            <h3>Prognoza na dziś</h3>
+            <div id="kontenerPrognozyDzis" class="kontener-prognozy">
+            </div>
+        </section>
+
+        <hr>
 
         <section class="prognoza">
             <h3>Prognoza na kilka dni</h3>
@@ -47,6 +60,8 @@
             </div>
         </section>
     </main>
+    
+    <hr>
 
     <footer class="footer">
         <p>Dane pogodowe: OpenWeather</p>

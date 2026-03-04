@@ -15,7 +15,6 @@ body {
   min-height: 100%;
   background-color: #fff;
   color: #222;
-  line-height: 1.4;
 }
 
 .container {
@@ -32,8 +31,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
   padding-bottom: 15px;
 }
 
@@ -105,7 +103,7 @@ body {
 
 .main {
   flex: 1;
-  margin-bottom: 40px;
+  margin-top: 10px;
 }
 
 .komunikat {
@@ -153,14 +151,13 @@ body {
 
 .prognoza {
   text-align: center;
-  border-top: 1px solid #ddd;
-  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .prognoza h3 {
   font-weight: 700;
   font-size: 1.3rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: #333;
 }
 
@@ -176,14 +173,52 @@ body {
   border: 1px solid #ccc;
   padding: 15px;
   border-radius: 8px;
-  min-width: 100px;
+  width: 100px;
 }
 
 .footer {
   text-align: center;
   font-size: 0.9rem;
   color: #999;
-  border-top: 1px solid #ddd;
-  padding: 15px 0;
+  padding: 15px;
   background-color: #fff;
+}
+
+/* --- Prognoza godzinowa (dzisiaj) --- */
+
+.prognoza-dzis {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.prognoza-dzis h3 {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.prognoza-dzis .kontener-prognozy {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.ladny-kafelek {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  min-width: 110px;
+  background-color: #f9f9f9;
+}
+
+.ladny-kafelek img {
+  border-radius: 10px;  
+  background-color: #b6b6b6;
+  width: 50px;
+  height: 50px;
 }
