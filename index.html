@@ -5,16 +5,21 @@
     <title>Pogodynka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 </head>
 <body>
 
 <div class="container">
     <header class="header">
-        <div class="nazwa_aplikacji">Pogodynka</div> 
+        <div class="logo">
+            <img src="favicon.png" alt="LOGO">
+            <h4>Pogodynka</h4>
+        </div> 
 
         <div class="wyszukiwarka">
             <input type="text" id="poleMiasta" value="Łódź" placeholder="Wpisz nazwę miasta">
             <button id="przyciskSzukaj">Szukaj</button>
+            <button id="przyciskLokalizacja">Moja Lokalizacja</button>
         </div>
 
         <div class="przyciskiZmiany">
@@ -39,7 +44,7 @@
 
                     <div id="opisPogody">Opis pogody</div>
                     <div>Wilgotność: <span id="wilgotnosc">0</span>%</div>
-                    <div>Wiatr: <span id="predkoscWiatru">0</span> m/s</div>
+                    <div>Wiatr: <span id="predkoscWiatru">0</span></div>
                 </div>
             </div>
         </section>
