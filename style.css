@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Arial";
+  font-family: Arial;
   transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
@@ -16,8 +16,6 @@ body {
   height: 100%;
   background-color: #fff;
   color: #222;
-
-  transition: color, background-color 0.4s ease, color 0.4s ease;
 }
 
 .container {
@@ -28,6 +26,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* ---------------------------------------- */
+/* header */
 
 .header {
   background-color: #fff;
@@ -53,7 +54,6 @@ body {
   height: 50px;
 }
 
-
 .wyszukiwarka {
   flex: 1 1 300px;
   display: flex;
@@ -64,36 +64,34 @@ body {
 
 .wyszukiwarka input {
   padding: 8px 12px;
-  background-color: #FFF;
+  background-color: #fff;
   border: 1px solid #bbb;
   border-radius: 20px;
   font-size: 1rem;
   width: 180px;
-  transition: background-color 0.4s, color 0.3s, border-color 0.3s;
 }
 
 .wyszukiwarka input:focus {
   outline: none;
-  border-color: #f5c518;
+  border-color: #00a2e8;
 }
 
 .wyszukiwarka button {
   padding: 8px 16px;
-  background-color: #f5c518;
+  background-color: #00a2e8;
   border: none;
   border-radius: 20px;
   color: #222;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+}
+
+.wyszukiwarka button:hover {
+  background-color: #0486be;
 }
 
 .wyszukiwarka #przyciskLokalizacja {
   width: 140px;
-}
-
-.wyszukiwarka button:hover {
-  background-color: #ddb616;
 }
 
 .przyciskiZmiany {
@@ -105,23 +103,24 @@ body {
 .przyciskiZmiany button {
   padding: 8px 16px;
   border-radius: 20px;
-  border: 1px solid #f5c518;
+  border: 1px solid #00a2e8;
   background-color: transparent;
-  color: #f5c518;
+  color: #00a2e8;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 .przyciskiZmiany button:hover {
-  background-color: #f5c518;
+  background-color: #00a2e8;
   color: #222;
 }
 
+/* ---------------------------------------- */
+/* main */
+
 .main {
   flex: 1;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin: 10px 0 20px;
 }
 
 .komunikat {
@@ -139,7 +138,6 @@ body {
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 15px;
-  color: #333;
 }
 
 .pogoda-glowna {
@@ -156,43 +154,74 @@ body {
   gap: 15px;
 }
 
-.ikona-temp img {
-  width: 70px;
-  height: 70px;
-}
-
 .temperatura {
   font-size: 1.7rem;
   font-weight: 700;
-  color: #222;
 }
 
-.prognoza {
+.prognoza,
+.prognoza-dzis {
   text-align: center;
   margin-top: 20px;
 }
 
-.prognoza h3 {
+.prognoza-dzis {
+  margin-bottom: 20px;
+}
+
+.prognoza h3,
+.prognoza-dzis h3 {
   font-weight: 700;
   font-size: 1.3rem;
   margin-bottom: 20px;
-  color: #333;
 }
 
-.prognoza .kontener-prognozy {
+.prognoza-dzis h3 {
+  margin-bottom: 15px;
+}
+
+.kontener-prognozy {
   display: flex;
   justify-content: center;
   gap: 20px;
+}
+
+.prognoza .kontener-prognozy {
   flex-wrap: wrap;
 }
 
-.prognoza .prognoza-dnia {
+.prognoza-dzis .kontener-prognozy {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.prognoza-dnia,
+.ladny-kafelek {
   text-align: center;
   border: 1px solid #ccc;
   padding: 15px;
   border-radius: 8px;
+}
+
+.prognoza-dnia {
   width: 100px;
 }
+
+.ladny-kafelek {
+  min-width: 110px;
+  flex: 1 1 110px;
+  background-color: #f9f9f9;
+}
+
+.ladny-kafelek img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #b6b6b6;
+}
+
+/* ---------------------------------------- */
+/* footer */
 
 .footer {
   text-align: center;
@@ -202,78 +231,35 @@ body {
   background-color: #fff;
 }
 
-.prognoza-dzis {
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.prognoza-dzis h3 {
-  font-weight: 700;
-  font-size: 1.3rem;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.prognoza-dzis .kontener-prognozy {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-}
-
-.ladny-kafelek {
-  text-align: center;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 8px;
-  min-width: 110px;
-  background-color: #f9f9f9;
-}
-
-.ladny-kafelek img {
-  border-radius: 10px;  
-  background-color: #b6b6b6;
-  width: 50px;
-  height: 50px;
-}
-
-/* --------------------------------------------------- */
+/* ---------------------------------------- */
+/* ciemny motyw */
 
 .ciemny-motyw {
   background-color: #111;
-  color: #FFF;
+  color: #fff;
 }
 
-.ciemny-motyw .header,.ciemny-motyw .footer {
+.ciemny-motyw .header,
+.ciemny-motyw .footer {
   background-color: #111;
 }
 
-.ciemny-motyw .nazwa_aplikacji, .ciemny-motyw h2, .ciemny-motyw .logo,
-.ciemny-motyw h3, .ciemny-motyw .temperatura {
-  color: #FFF;
+.ciemny-motyw h2,
+.ciemny-motyw h3,
+.ciemny-motyw .logo,
+.ciemny-motyw .temperatura {
+  color: #fff;
 }
 
 .ciemny-motyw .ladny-kafelek {
   background-color: #1e1e1e;
-  border: 1px solid #333;
-  color: #FFF;
+  border-color: #333;
 }
 
 .ciemny-motyw input {
   background-color: #222;
-  color: #FFF;
-  border: 1px solid #444;
-}
-
-.ciemny-motyw .przyciskiZmiany button {
-  border-color: #1e6753;
-  color: #FFF;
-}
-
-.ciemny-motyw .przyciskiZmiany button:hover {
-  background-color: #1e6753;
+  color: #fff;
+  border-color: #444;
 }
 
 .ciemny-motyw .wyszukiwarka input:focus {
@@ -281,11 +267,23 @@ body {
 }
 
 .ciemny-motyw .wyszukiwarka button {
-  color: #FFF;
   background-color: #1e6753;
+  color: #fff;
 }
 
 .ciemny-motyw .wyszukiwarka button:hover {
+  background-color: #145243;
+}
+
+.ciemny-motyw .przyciskiZmiany button {
+  border-color: #1e6753;
+  color: #fff;
+}
+
+.ciemny-motyw .przyciskiZmiany button:hover {
   background-color: #1e6753;
 }
 
+.ciemny-motyw .ladny-kafelek img {
+  background-color: #606060;
+}

@@ -61,10 +61,10 @@ function pobierzPogode(miasto) {
 
             //teraz
 
-            const dataDzis = new Date(data.dt * 1000).toLocaleDateString("pl-PL");
+            const dzisiejszaData = new Date().toLocaleDateString("pl-PL");
 
             document.getElementById("nazwaMiasta").textContent =
-            poleMiasta.value + ", " + data.sys.country + " - " + dataDzis;
+            poleMiasta.value + ", " + data.sys.country + " - " + dzisiejszaData;
 
             if (jednostka === "metric") {
                 symbol = "°C";
@@ -74,18 +74,16 @@ function pobierzPogode(miasto) {
                 symbol2 = "mph"
             }
 
-            document.getElementById("temperatura").textContent = data.main.temp + symbol;
+            document.getElementById("temperatura").textContent = Math.round(data.main.temp) + symbol;
             document.getElementById("opisPogody").textContent = data.weather[0].description;
             document.getElementById("wilgotnosc").textContent = data.main.humidity;
             document.getElementById("predkoscWiatru").textContent = data.wind.speed + " "  + symbol2;
             document.getElementById("ikonaPogody").src =
                 "https://openweathermap.org/img/wn/" +
                 data.weather[0].icon + "@2x.png";
-
-            komunikat.textContent = "";
         })
         .catch(error => {
-            komunikat.textContent = error.message;
+            komunikat.textContent = "Takie miasto nie istnieje. Wpisz poprawnie.";
         });
 
         fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + miasto + "&appid=" + apiKey + "&units=" + jednostka + "&lang=pl")
@@ -95,39 +93,43 @@ function pobierzPogode(miasto) {
             //cały dzień
 
             const teraz = new Date();
-            const dzisiaj = teraz.toISOString().split("T")[0];
 
-            const prognozaDzis = data.list.filter(item =>
-                item.dt_txt.startsWith(dzisiaj)
-            );
+            const prognozaDzis = data.list.filter(item => {
+                const dataItem = new Date(item.dt_txt);
+
+                return (
+                    dataItem.getFullYear() === teraz.getFullYear() &&
+                    dataItem.getMonth() === teraz.getMonth() &&
+                    dataItem.getDate() === teraz.getDate()
+                );
+            });
 
             const kontenerDzis = document.getElementById("kontenerPrognozyDzis");
             kontenerDzis.innerHTML = "";
 
-            prognozaDzis.forEach(godzina => {
+            for (let i = 0; i < prognozaDzis.length; i++) {
+                const godzina = prognozaDzis[i];
 
-                let godzinaTekst = godzina.dt_txt.split(" ")[1].slice(0,5);
-                let temp = godzina.main.temp;
-                let opis = godzina.weather[0].description;
-                let ikona = godzina.weather[0].icon;
-                let wilgotnosc = godzina.main.humidity;
-                let wiatr = godzina.wind.speed;
+                const godzinaTekst = godzina.dt_txt.split(" ")[1].slice(0, 5);
+                const temp = Math.round(godzina.main.temp);
+                const opis = godzina.weather[0].description;
+                const ikona = godzina.weather[0].icon;
+                const wilgotnosc = godzina.main.humidity;
+                const wiatr = godzina.wind.speed;
 
-
-                let div = document.createElement("div");
-                div.classList.add("ladny-kafelek");
+                const div = document.createElement("div");
+                div.className = "ladny-kafelek";
 
                 div.innerHTML = `
-                    <div><strong>${godzinaTekst}</strong></div>
+                    <div><b>${godzinaTekst}</b></div>
                     <img src="https://openweathermap.org/img/wn/${ikona}@2x.png">
                     <div>${temp}${symbol}</div>
                     <div>${opis}</div>
                     <div>Wilgotność: ${wilgotnosc}%</div>
-                    <div>Wiatr: ${wiatr} ${symbol2}</div>
-                `;
+                    <div>Wiatr: ${wiatr} ${symbol2}</div>`;
 
                 kontenerDzis.appendChild(div);
-            });
+            }
 
             // 5 dni
 
@@ -139,9 +141,8 @@ function pobierzPogode(miasto) {
             );
 
             for(let i=0;i<5;i++) {
-
                 let dataTekst = new Date(daily[i].dt_txt).toLocaleDateString("pl-PL");
-                let temp = daily[i].main.temp;
+                let temp = Math.round(daily[i].main.temp);
 
                 let div = document.createElement("div");
                 div.classList.add("ladny-kafelek");
