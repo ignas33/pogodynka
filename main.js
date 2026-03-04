@@ -80,9 +80,6 @@ function pobierzPogode(miasto) {
         .then(response => response.json())
         .then(data => {
 
-            const kontener = document.getElementById("kontenerPrognozy");
-            kontener.innerHTML = "";
-
             let symbol;
             if (jednostka === "metric") {
                 symbol = "°C";
@@ -106,6 +103,9 @@ function pobierzPogode(miasto) {
                 let temp = godzina.main.temp;
                 let opis = godzina.weather[0].description;
                 let ikona = godzina.weather[0].icon;
+                let wilgotnosc = godzina.main.humidity;
+                let wiatr = godzina.wind.speed;
+
 
                 let div = document.createElement("div");
                 div.classList.add("ladny-kafelek");
@@ -115,10 +115,15 @@ function pobierzPogode(miasto) {
                     <img src="https://openweathermap.org/img/wn/${ikona}@2x.png">
                     <div>${temp}${symbol}</div>
                     <div>${opis}</div>
+                    <div>Wilgotność: ${wilgotnosc}%</div>
+                    <div>Wiatr: ${wiatr} m/s</div>
                 `;
 
                 kontenerDzis.appendChild(div);
             });
+
+            const kontener = document.getElementById("kontenerPrognozy");
+            kontener.innerHTML = "";
 
             const daily = data.list.filter(item =>
                 item.dt_txt.includes("12:00:00")
