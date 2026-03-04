@@ -1,7 +1,7 @@
 const apiKey = "KLUCZ_API";
 
 let jednostka = "metric";
-let aktualneMiasto = "Łódź";
+let aktualneMiasto = "Lodz";
 
 const poleMiasta = document.getElementById("poleMiasta");
 const przyciskSzukaj = document.getElementById("przyciskSzukaj");
@@ -63,9 +63,23 @@ function pobierzPogode(miasto) {
 
             const dzisiejszaData = new Date().toLocaleDateString("pl-PL");
 
-            document.getElementById("nazwaMiasta").textContent =
-            poleMiasta.value + ", " + data.sys.country + " - " + dzisiejszaData;
+            // występuje błąd, że po wpisani łódź wypisuje województwo łodzkie
+            // a dopiero lodz to łódź
 
+            if(data.name == "Lódzkie") {
+                miasto = "Lodz";
+                pobierzPogode(miasto);
+            } 
+
+            if(data.name == "Lodz") {
+                document.getElementById("nazwaMiasta").textContent = "Łódź, " + data.sys.country + " - " + dzisiejszaData;
+            } else {
+                document.getElementById("nazwaMiasta").textContent =
+                data.name + ", " + data.sys.country + " - " + dzisiejszaData;
+            }
+
+
+          
             if (jednostka === "metric") {
                 symbol = "°C";
                 symbol2 = "m/s"
@@ -81,6 +95,8 @@ function pobierzPogode(miasto) {
             document.getElementById("ikonaPogody").src =
                 "https://openweathermap.org/img/wn/" +
                 data.weather[0].icon + "@2x.png";
+
+            komunikat.textContent = "";
         })
         .catch(error => {
             komunikat.textContent = "Takie miasto nie istnieje. Wpisz poprawnie.";
