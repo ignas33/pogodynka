@@ -54,14 +54,47 @@ przyciskLokalizacja.addEventListener("click", function() {
     }
 });
 
+// komunikaty
+
+function pokazLoading() {
+    komunikat.textContent = "Ładowanie danych pogody...";
+}
+
+function ukryjLoading() {
+    komunikat.textContent = "";
+}
+
+function pokazBlad(message) {
+    komunikat.textContent = message;
+}
+
+// głowna funkcja pobierania
+
 function pobierzPogode(miasto) {
+
+    pokazLoading();
 
     if (miasto.toLowerCase() === "łódź") {
         miasto = "Lodz";
     }
 
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + miasto + "&appid=" + apiKey + "&units=" + jednostka + "&lang=pl")
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+
+                if (response.status === 404) {
+                    throw new Error("Nie znaleziono takiego miasta.");
+                }
+                
+                if (response.status === 401) {
+                    throw new Error("Błąd klucza API.");
+                }
+
+                throw new Error("Błąd serwera pogodowego.");
+            }
+
+            return response.json();
+        })
         .then(data => {
 
             //teraz
@@ -91,14 +124,29 @@ function pobierzPogode(miasto) {
                 "https://openweathermap.org/img/wn/" +
                 data.weather[0].icon + "@2x.png";
 
-            komunikat.textContent = "";
+            ukryjLoading();
         })
         .catch(error => {
-            komunikat.textContent = "Takie miasto nie istnieje. Wpisz poprawnie.";
+            pokazBlad(error.message);
         });
 
         fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + miasto + "&appid=" + apiKey + "&units=" + jednostka + "&lang=pl")
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+
+                if (response.status === 404) {
+                    throw new Error("Nie znaleziono takiego miasta.");
+                }
+
+                if (response.status === 401) {
+                    throw new Error("Błąd klucza API.");
+                }
+                
+                throw new Error("Błąd serwera pogodowego.");
+            }
+
+            return response.json();
+        })
         .then(data => {
 
             //cały dzień
@@ -163,10 +211,14 @@ function pobierzPogode(miasto) {
                 kontener.appendChild(div);
             }
             
-
+            ukryjLoading();
         })
         .catch(error => {
-            komunikat.textContent = "Takie miasto nie istnieje. Wpisz poprawnie.";
+            if (!navigator.onLine) {
+                pokazBlad("Brak połączenia z internetem.");
+            } else {
+                pokazBlad("Nie udało się pobrać prognozy.");
+            }
         });
 
 }
@@ -179,6 +231,5 @@ function pobierzPogodeLokalizacja(lat, lon) {
             pobierzPogode(aktualneMiasto);
         })
 }
-
 
 pobierzPogode(aktualneMiasto);
