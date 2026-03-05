@@ -1,4 +1,4 @@
-const apiKey = "KLUCZ_API";
+const apiKey = "5f97947b85fb94ab27cc236084985035";
 
 let jednostka = "metric";
 let aktualneMiasto = "Lodz";
