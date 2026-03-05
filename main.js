@@ -1,4 +1,4 @@
-const apiKey = "5f97947b85fb94ab27cc236084985035";
+const apiKey = "KLUCZ_API";
 
 let jednostka = "metric";
 let aktualneMiasto = "Lodz";
@@ -179,5 +179,6 @@ function pobierzPogodeLokalizacja(lat, lon) {
             pobierzPogode(aktualneMiasto);
         })
 }
+
 
 pobierzPogode(aktualneMiasto);
